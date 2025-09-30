@@ -1,21 +1,27 @@
 ﻿using BepInEx;
+using BepInEx.Configuration;
 using NAudio.Wave;
 using R2API;
+using RiskOfOptions;
+using RiskOfOptions.OptionConfigs;
+using RiskOfOptions.Options;
 using RoR2;
 using SimpleJSON;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.Networking;
-using System.Text.RegularExpressions;
 using Random = UnityEngine.Random;
 
 namespace ExamplePlugin
 {
     [BepInDependency(ItemAPI.PluginGUID)]
     [BepInDependency(LanguageAPI.PluginGUID)]
+    [BepInDependency("com.rune580.riskofoptions")]
+
     [BepInPlugin(PluginGUID, PluginName, PluginVersion)]
     public class TiktokNarrator : BaseUnityPlugin
     {
@@ -43,10 +49,16 @@ namespace ExamplePlugin
         ];
 
         const string Endpoint = "https://tiktok-tts.weilnet.workers.dev/api/generation";
+        
+        ConfigEntry<float> VolumeMultiplier;
 
         public void Awake()
         {
             Log.Init(Logger);
+
+            VolumeMultiplier = Config.Bind("Audio", "Volume Multiplier", 2f, "Multiplier for TTS volume.");
+            ModSettingsManager.AddOption(new SliderOption(VolumeMultiplier, new StepSliderConfig() { min = 0f, max = 4f, increment = 0.15f }));
+
             On.RoR2.Inventory.GiveItem_ItemIndex_int += Inventory_GiveItem;
         }
 
@@ -104,6 +116,7 @@ namespace ExamplePlugin
 
             var input = go.AddComponent<StreamedWwiseAudio>();
             input.EventId = 2603804773;
+            input.VolumeMultiplier = VolumeMultiplier.Value;
             input.FeedSamples(samples, sampleRate, channels);
         }
 
@@ -154,6 +167,8 @@ namespace ExamplePlugin
         public uint SampleRate = 48000;
         public uint NumberOfChannels = 1;
 
+        public float VolumeMultiplier = 2f;
+
         private bool IsPlaying = true;
         private Queue<float> SampleQueue = new Queue<float>();
            
@@ -169,7 +184,7 @@ namespace ExamplePlugin
             {
                 if (SampleQueue.Count > 0)
                 {
-                    samples[i] = SampleQueue.Dequeue() * 2f;
+                    samples[i] = SampleQueue.Dequeue() * VolumeMultiplier;
                     samples[i] = Mathf.Clamp(samples[i], -1f, 1f);
                 }
                 else

@@ -25,4 +25,10 @@
 		<PackageReference Include="MMHOOK.RoR2" Version="2025.6.3" NoWarn="NU1701" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Reference Include="RiskOfOptions">
+	    <HintPath>..\RiskOfOptions.dll</HintPath>
+	  </Reference>
+	</ItemGroup>
+
 </Project>
