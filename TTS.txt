@@ -1,0 +1,10 @@
+Event	ID	Name			Wwise Object Path	Notes
+	2603804773	Play_TTS			\Default Work Unit\Play_TTS	
+	4176628088	Play_fronk_warioware			\Default Work Unit\Play_fronk_warioware	
+
+Source plug-ins	ID	Name	Type		Wwise Object Path	Notes
+	882341959	Audio Input	Wwise Audio Input		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Mixer\TTS\Audio Input	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	312489064	fronk-warioware	D:\WwiseProjects\im taking a wwise level doodo\.cache\Windows\SFX\fronk-warioware_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Mixer\fronk-warioware		56988
+
