@@ -28,7 +28,7 @@ namespace ExamplePlugin
         public const string PluginGUID = $"{PluginAuthor}.{PluginName}";
         public const string PluginAuthor = "KAUTARUMA";
         public const string PluginName = "TiktokNarrator";
-        public const string PluginVersion = "1.0.0";
+        public const string PluginVersion = "1.0.1";
 
         static readonly Regex XmlRegex = new("<(?>(?:<(?<B>)|>(?<-B>)|[^<>]+)*)>", RegexOptions.Compiled);
 

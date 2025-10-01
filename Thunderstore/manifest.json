@@ -1,6 +1,6 @@
 ﻿{
 	"name": "ROR2TikTokNarrator",
-	"version_number": "1.0.0",
+	"version_number": "1.0.1",
 	"website_url": "https://github.com/KAUTARUMA/ROR2TikTokNarrator",
 	"description": "Makes the beautiful Tiktok TTS sing the item names to you.",
 	"dependencies": [
