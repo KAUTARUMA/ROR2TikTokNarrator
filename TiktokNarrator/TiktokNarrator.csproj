@@ -15,7 +15,9 @@
 
 		<PackageReference Include="BepInEx.Core" Version="5.4.21" />
 
-		<PackageReference Include="NAudio" Version="2.2.1" />
+		<PackageReference Include="NAudio.Core" Version="2.2.1" />
+
+		<PackageReference Include="NAudio.WinMM" Version="2.2.1" />
 
 		<PackageReference Include="R2API.Items" Version="1.0.7" />
 		<PackageReference Include="R2API.Language" Version="1.0.1" />
