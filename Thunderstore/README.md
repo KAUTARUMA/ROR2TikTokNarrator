@@ -1,3 +1,1 @@
-# My first mod
-
-Description.
+# Makes the beautiful Tiktok TTS sing the item names to you. 
